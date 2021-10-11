@@ -6,11 +6,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no,  -scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="../styles/styles.css">
 
 </head>
 
 
 <body>
+
+
+    <nav>
+        <div class="left">
+            <a href="../../index.php"><h1>ByeCiné!</h1></a>
+        </div>
+        <div class="right">
+            <a class="nav-movie" href="./movie.php">Films</a>
+            <a class="nav-actors" href="./actor.php">Acteurs</a>
+        </div>
+    </nav>
 
 <div>
     <ul>
@@ -29,18 +41,23 @@
             $acteurs = getActeursByFilm($PDO, $film['id']);
 
             echo '<li>
-                Titre : ' . $film['nom'] . '<br>
-                Année de sortie : ' . $film['annee'] . '<br>
-                Score : ' . $film['score'] . '<br>
-                Nombre de votants : ' . $film['nbVotants'] . '<br>
-                Acteurs : ' . implode(', ',  array_map(function($acteur) {
+                <strong>Titre :</strong> ' . $film['nom'] . '<br>
+                <strong>Année de sortie :</strong> ' . $film['annee'] . '<br>
+                <strong>Score :</strong> ' . $film['score'] . '<br>
+                <strong>Nombre de votants :</strong> ' . $film['nbVotants'] . '<br>
+                <strong>Acteurs :</strong> ' . implode(', ',  array_map(function($acteur) {
                     return $acteur['prenom'] . ' ' . $acteur['nom'];
-                }, $acteurs)) . ' 
+                }, $acteurs)) . '
             </li>';
         }
 
         ?>
     </ul>
+
+    <a href="./update_movie.php" class="add">
+        Ajouter
+    </a>
+
 </div>
 
 </body>
