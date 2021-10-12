@@ -45,7 +45,7 @@
                 <strong>Année de sortie :</strong> ' . $film['annee'] . '<br>
                 <strong>Score :</strong> ' . $film['score'] . '<br>
                 <strong>Nombre de votants :</strong> ' . $film['nbVotants'] . '<br>
-                <strong>Acteurs :</strong> ' . implode(', ',  array_map(function($acteur) {
+                <strong>Acteurs :</strong> ' . implode(', ',  array_map(static function($acteur) {
                     return $acteur['prenom'] . ' ' . $acteur['nom'];
                 }, $acteurs)) . '
             </li>';

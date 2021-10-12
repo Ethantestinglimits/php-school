@@ -5,8 +5,7 @@ function connectDB() {
     $db = 'iut_php';
     $pwd = '';
     try {
-        $PDO = new PDO('mysql:host=' . $host . ';dbname=' . $db . ';charset=utf8', $user, $pwd);
-        return $PDO;
+        return new PDO('mysql:host=' . $host . ';dbname=' . $db . ';charset=utf8', $user, $pwd);
     } catch (Exception $e) { exit('Error :' . $e->getMessage()); }
 }
 

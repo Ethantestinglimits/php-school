@@ -45,7 +45,7 @@
             echo '<li>
                 <strong>Nom :</strong> ' . $acteur['nom'] . '<br>
                 <strong>Prénom :</strong> ' . $acteur['prenom'] . '<br>
-                <strong>Films :</strong> ' . implode(', ',  array_map(function($film) {
+                <strong>Films :</strong> ' . implode(', ',  array_map(static function($film) {
                     return $film['nom'] . ' ' . $film['annee'] . ' ' . $film['score'];
                 }, $films)) . ' 
             </li>';

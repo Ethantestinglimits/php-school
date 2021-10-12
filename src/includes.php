@@ -32,7 +32,7 @@ function getActeurs($PDO) {
     }
 }
 
-function getActeursByFilm ($PDO, $film_id) {
+function getActeursByFilm ($PDO, $film_id): array {
 
     $stmt = $PDO
         ->prepare('SELECT acteur_id FROM casting WHERE film_id = :film_id');
@@ -47,7 +47,7 @@ function getActeursByFilm ($PDO, $film_id) {
         $stmt->bindParam(':acteur_id', $acteur['acteur_id'], PDO::PARAM_INT);
         $stmt->execute();
 
-        array_push($acteurs, $stmt->fetch());
+        $acteurs[] = $stmt->fetch();
     }
 
     return $acteurs;
@@ -69,7 +69,7 @@ function getFilmsByActeur ($PDO, $acteur_id) {
         $stmt->bindParam(':film_id', $film_id['film_id'], PDO::PARAM_INT);
         $stmt->execute();
 
-        array_push($films, $stmt->fetch());
+        $films[] = $stmt->fetch();
     }
 
     return $films;

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-<link href="styles.css" rel="stylesheet">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Ajout de films</title>
@@ -22,13 +21,13 @@
 
 <form method="post" action="#">
 
-    <input type="text" name="nom" id="nom" placeholder="Nom du film" required>
+    <label for="nom"><input type="text" name="nom" id="nom" placeholder="Nom du film" required></label>
 
-    <input type="number" name="annee" id="annee" placeholder="Année de sortie" required>
+    <label for="annee"><input type="number" name="annee" id="annee" placeholder="Année de sortie" required></label>
 
-    <input type="number" name="score" id="score" placeholder="Score du film" required>
+    <label for="score"><input type="number" name="score" id="score" placeholder="Score du film" required></label>
 
-    <input type="number" name="nbVotants" id="nbVotants" placeholder="Nombre de votants">
+    <label for="nbVotants"><input type="number" name="nbVotants" id="nbVotants" placeholder="Nombre de votants"></label>
 
     <br>
     <button type="submit">Envoyer</button>
@@ -50,8 +49,12 @@
         $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         //Vérifier les données
-        if ($_POST['annee'] > 2050 || $_POST['annee'] < 1800) echo 'L\'année n\'est pas valide !';
-        else if ($_POST['score'] < 0 || $_POST['score'] > 10) echo 'Le score n\'est pas valide !';
+        if ($_POST['annee'] > 2050 || $_POST['annee'] < 1800) {
+            echo 'L\'année n\'est pas valide !';
+        }
+        else if ($_POST['score'] < 0 || $_POST['score'] > 10) {
+            echo 'Le score n\'est pas valide !';
+        }
         else {
             //Vérifier si le film existe déjà dans la base de donnée
             $stmt = $PDO->prepare('SELECT * FROM film WHERE nom = :nom');
@@ -60,10 +63,14 @@
             $result = $stmt->fetch();
             if ($result)
                 //le film existe déjà
-                $sqlStmt = 'UPDATE film SET nom = :nom, annee = :annee, score = :score, nbVotants = :nbVotants WHERE id = '.$result['id'];
+            {
+                $sqlStmt = 'UPDATE film SET nom = :nom, annee = :annee, score = :score, nbVotants = :nbVotants WHERE id = ' . $result['id'];
+            }
             else
                 //il faut rajouter le film
+            {
                 $sqlStmt = 'INSERT INTO film (nom, annee, score, nbVotants) VALUES (:nom, :annee, :score, :nbVotants)';
+            }
 
             $PDO->prepare($sqlStmt)->execute($_POST);
 

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-<link href="styles.css" rel="stylesheet">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Ajout acteur</title>
@@ -22,9 +21,9 @@
 
 <form method="post" action="#">
 
-    <input type="text" name="nom" id="nom" placeholder="Nom" required>
+    <label for="nom"><input type="text" name="nom" id="nom" placeholder="Nom" required></label>
 
-    <input type="text" name="prenom" id="prenom" placeholder="Prénom" required>
+    <label for="prenom"><input type="text" name="prenom" id="prenom" placeholder="Prénom" required></label>
 
     <br>
     <button type="submit">Envoyer</button>
@@ -46,8 +45,12 @@
         $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         //Vérifier les données
-        if (strlen($_POST['nom']) > 255) echo 'Le nom est trop long !';
-        else if (strlen($_POST['prenom']) > 255) echo 'Le prénom est trop long';
+        if (strlen($_POST['nom']) > 255) {
+            echo 'Le nom est trop long !';
+        }
+        else if (strlen($_POST['prenom']) > 255) {
+            echo 'Le prénom est trop long';
+        }
         else {
             //ajout du film dans la base de données
             $sqlStmt = 'INSERT INTO acteur (nom, prenom) VALUES (:nom, :prenom)';
