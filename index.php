@@ -11,7 +11,6 @@
 
 </head>
 
-
 <body>
 
 <nav>
@@ -30,7 +29,7 @@
 <div class="home">
 
     <div class="container">
-        <?
+        <?php
 
         require_once "src/includes.php";
         require_once "src/config.php";
@@ -41,11 +40,9 @@
         $films = getFilms($PDO);
         $rand_keys = array_rand($films, 3);
 
-        foreach ($rand_keys as $key => $film) {
-            $i = 0;
-            $movie = $films[$film[$i]];
-            echo '<div class="card">' . '<img src="' . $movie['image'] . '">' . '<h1><strong>' . $movie['name'] . '</strong>' . '</div>';
-            ++$i;
+        foreach ($rand_keys as $rand_key) {
+            $movie = $films[$rand_key];
+            echo '<div class="card">' . '<img alt="Affiche film" src="' . $movie['image'] . '"> <h1>' . $movie['nom'] . '</h1>' . '</div>';
         }
         ?>
     </div>

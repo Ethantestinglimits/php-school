@@ -23,11 +23,13 @@
 
     <label for="nom"><input type="text" name="nom" id="nom" placeholder="Nom du film" required></label>
 
-    <label for="annee"><input type="number" name="annee" id="annee" placeholder="Année de sortie" required></label>
+    <label for="annee"><input type="number" name="annee" id="annee" placeholder="Année de sortie"></label>
 
-    <label for="score"><input type="number" name="score" id="score" placeholder="Score du film" required></label>
+    <label for="score"><input type="number" name="score" id="score" placeholder="Score du film"></label>
 
     <label for="nbVotants"><input type="number" name="nbVotants" id="nbVotants" placeholder="Nombre de votants"></label>
+
+    <label for="image"><input type="text" name="image" id="image" placeholder="Lien image du film"></label>
 
     <br>
     <button type="submit">Envoyer</button>
