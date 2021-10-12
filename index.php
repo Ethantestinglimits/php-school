@@ -2,6 +2,7 @@
 <html lang="fr">
 
 <head>
+
     <title>Projet Film</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -26,7 +27,30 @@
 <div class="home">
     Dites bye bye à AlloCiné et venez vous cultiver cinématographiquement dès maintenant sur <h2>ByeCiné!</h2>
 </div>
+<div class="home">
 
+    <div class="container">
+        <?
+
+        require_once "src/includes.php";
+        require_once "src/config.php";
+
+        $PDO = connectDB();
+        $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $films = getFilms($PDO);
+        $rand_keys = array_rand($films, 3);
+
+        foreach ($rand_keys as $key => $film) {
+            $i = 0;
+            $movie = $films[$film[$i]];
+            echo '<div class="card">' . '<img src="' . $movie['image'] . '">' . '<h1><strong>' . $movie['name'] . '</strong>' . '</div>';
+            ++$i;
+        }
+        ?>
+    </div>
+
+</div>
 
 </body>
 </html>
