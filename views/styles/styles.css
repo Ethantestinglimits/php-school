@@ -115,6 +115,9 @@ ul {
 }
 
 li {
+
+    display: flex;
+
     margin: 2rem;
     padding: 1rem;
 
@@ -130,22 +133,38 @@ li {
 
 }
 
+
+li .movie-container {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 li .movie-name {
 
-    text-align: center;
-    font-size: clamp(15px, 2vh, 150px);
+    text-align: left;
+    font-size: clamp(15px, 2.5vh, 150px);
+    color: greenyellow;
     font-weight: bolder;
     margin-bottom: 0.5rem;
 }
 
 
 li:not(.collapsable-element) {
-    width: clamp(100px, 25vw, 400px);
+    width: 30vw;
 }
 
 li:hover {
 
     transform: scale(1.05);
+}
+
+li .left {
+
+    border-radius: 15px;
+    height: 20vh;
+    margin-right: 1rem;
 }
 
 details summary {
@@ -194,7 +213,6 @@ details summary {
 
 .collapse .description {
     color: black;
-    padding: var(--sp-md);
     margin: 0;
     font-size: 1.4rem;
 }

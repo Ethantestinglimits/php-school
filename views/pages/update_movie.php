@@ -25,7 +25,7 @@
 
     <label for="annee"><input type="number" name="annee" id="annee" placeholder="Année de sortie"></label>
 
-    <label for="score"><input type="number" name="score" id="score" placeholder="Score du film"></label>
+    <label for="score"><input type="number" step="0.1" name="score" id="score" placeholder="Score du film"></label>
 
     <label for="nbVotants"><input type="number" name="nbVotants" id="nbVotants" placeholder="Nombre de votants"></label>
 
@@ -66,12 +66,12 @@
             if ($result)
                 //le film existe déjà
             {
-                $sqlStmt = 'UPDATE film SET nom = :nom, annee = :annee, score = :score, nbVotants = :nbVotants WHERE id = ' . $result['id'];
+                $sqlStmt = 'UPDATE film SET nom = :nom, annee = :annee, score = :score, nbVotants = :nbVotants, image = :image WHERE id = ' . $result['id'];
             }
             else
                 //il faut rajouter le film
             {
-                $sqlStmt = 'INSERT INTO film (nom, annee, score, nbVotants) VALUES (:nom, :annee, :score, :nbVotants)';
+                $sqlStmt = 'INSERT INTO film (nom, annee, score, nbVotants, image) VALUES (:nom, :annee, :score, :nbVotants, :image)';
             }
 
             $PDO->prepare($sqlStmt)->execute($_POST);

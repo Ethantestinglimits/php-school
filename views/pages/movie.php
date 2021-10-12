@@ -40,19 +40,26 @@
 
             $acteurs = getActeursByFilm($PDO, $film['id']);
 
-            echo '<li>
-                <div class="movie-name">' . $film['nom'] . '</div>
-                <strong>Année de sortie :</strong> ' . $film['annee'] . '<br>
-                <strong>Score :</strong> ' . $film['score'] . '<br>
-                <strong>Nombre de votants :</strong> ' . $film['nbVotants'] . '<br>
-                <details class="collapse">
-                    <summary class="title">Acteurs</summary>
-                    <ul class="description">
-                    ' . implode('',  array_map(static function($acteur) {
+            echo '
+            <li>
+                <div class="movie-container">
+                    <img alt="Affiche du film" class="left" src="' . $film['image'] . '">
+                    <div class="right">
+                        <div class="movie-name">' . $film['nom'] . '</div>
+                        <strong>Année de sortie :</strong> ' . $film['annee'] . '<br>
+                        <strong>Score :</strong> ' . $film['score'] . '<br>
+                        <strong>Nombre de votants :</strong> ' . $film['nbVotants'] . '<br>
+                        <details class="collapse">
+                            <summary class="title">Acteurs</summary>
+                            <ul class="description">
+                            ' . implode('',  array_map(static function($acteur) {
                         return '<li class="collapsable-element">'. $acteur['prenom'] . ' ' . $acteur['nom'] . '</li>';
                     }, $acteurs)) . '
-                    </ul>
-                </details>
+                            </ul>
+                        </details>
+                   </div>
+                </div>
+
             </li>';
         }
 
