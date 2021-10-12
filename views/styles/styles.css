@@ -92,7 +92,6 @@ ul {
 }
 
 li {
-
     margin: 2rem;
     padding: 1rem;
 
@@ -101,16 +100,93 @@ li {
     box-shadow: -10px 10px 30px rgba(0,0,0,0.1);
 
     font-family: "Titillium Web", sans-serif;
-    font-size: clamp(10px, 2vh, 200px);
+    font-size: clamp(5px, 1.5vh, 100px);
     color: aliceblue;
 
     transition: 0.2s linear;
+
+}
+
+li .movie-name {
+
+    text-align: center;
+    font-size: clamp(15px, 2vh, 150px);
+    font-weight: bolder;
+    margin-bottom: 0.5rem;
+}
+
+
+li:not(.collapsable-element) {
+    width: clamp(100px, 25vw, 400px);
 }
 
 li:hover {
 
     transform: scale(1.05);
 }
+
+details summary {
+    list-style: inside none;
+}
+
+.collapse {
+    margin-top: 0.5rem;
+    border-radius: 0.8rem;
+    box-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.25);
+    background-color: #5c4e7a;
+    transition: box-shadow 250ms;
+    will-change: box-shadow;
+    overflow: hidden;
+
+}
+
+.collapse:hover {
+    box-shadow: 0.1rem 0.1rem 1.8rem rgba(0, 0, 0, 0.25);
+}
+
+.collapse .title {
+    font-family: "Titillium Web", sans-serif;
+    font-size: clamp(10px, 2vh, 200px);
+    color: aliceblue;
+    position: relative;
+    padding: .5rem 1rem;
+    font-weight: 700;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+.collapse .title::after {
+    content: "↓";
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.collapse[open] .title::after {
+    content: "⬆";
+}
+
+.collapse .description {
+    color: black;
+    padding: var(--sp-md);
+    margin: 0;
+    font-size: 1.4rem;
+}
+.collapse .description:not(:first-of-type) {
+    padding-top: 0;
+}
+
+.collapse li {
+
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    margin: 0.5rem;
+}
+
+
 
 .add {
 
@@ -209,4 +285,17 @@ button:hover {
     100% {
         opacity: 0;
     }
+}
+
+body::-webkit-scrollbar {
+    width: 1.6rem;
+}
+body::-webkit-scrollbar-thumb {
+    border: 0.4rem solid #0000;
+    border-radius: 99em;
+    background-color: #c3c2c4;
+    background-clip: content-box;
+}
+body::-webkit-scrollbar-thumb:hover {
+    background-color: #a2a1a3;
 }

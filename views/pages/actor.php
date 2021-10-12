@@ -45,9 +45,14 @@
             echo '<li>
                 <strong>Nom :</strong> ' . $acteur['nom'] . '<br>
                 <strong>Prénom :</strong> ' . $acteur['prenom'] . '<br>
-                <strong>Films :</strong> ' . implode(', ',  array_map(static function($film) {
-                    return $film['nom'] . ' ' . $film['annee'] . ' ' . $film['score'];
-                }, $films)) . ' 
+                <details class="collapse">
+                    <summary class="title">Films</summary>
+                    <ul class="description">
+                    ' . implode('',  array_map(static function($film) {
+                        return '<li class="collapsable-element">' . $film['nom'] . ' ' . $film['annee'] . ' ' . $film['score'] . '</li>';
+                    }, $films)) . ' 
+                    </ul>
+                </details>
             </li>';
         }
 
