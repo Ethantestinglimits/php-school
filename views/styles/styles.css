@@ -116,8 +116,6 @@ ul {
 
 li {
 
-    display: flex;
-
     margin: 2rem;
     padding: 1rem;
 
@@ -131,6 +129,10 @@ li {
 
     transition: 0.2s linear;
 
+}
+
+li.movie-li {
+    display: flex;
 }
 
 

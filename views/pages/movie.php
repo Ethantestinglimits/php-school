@@ -41,7 +41,7 @@
             $acteurs = getActeursByFilm($PDO, $film['id']);
 
             echo '
-            <li>
+            <li class="movie-li">
                 <div class="movie-container">
                     <img alt="Affiche du film" class="left" src="' . $film['image'] . '">
                     <div class="right">
